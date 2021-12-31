@@ -1,0 +1,25 @@
+<div class="col-lg-4 text-center">
+  <label for="Numero">Numero CIN</label>
+  <input
+    class="form-control"
+    type="text"
+    placeholder="Numero CNI"
+    [(ngModel)]="clientsaisi.ide"
+  /><br />
+  <input
+    class="form-control"
+    type="text"
+    placeholder="Nom du client"
+    [(ngModel)]="clientsaisi.nom"
+  /><br />
+  <input
+    class="form-control"
+    type="text"
+    placeholder="Prenom du client"
+    [(ngModel)]="clientsaisi.prenom"
+  />
+  <br />
+  <input class="form-control" type="file" (change)="showPreview($event)" />
+  <br />
+  <button class="btn btn-primary" (click)="save()">Enregistrer</button>
+</div>

@@ -1,0 +1,25 @@
+<div class="col-lg-4 text-center">
+  <label for="Numero">Numero CIN du client</label>
+  <input
+    class="form-control"
+    type="text"
+    placeholder="Numero CNI du client"
+    [(ngModel)]="payementef.cniclient"
+  /><br />
+  <label for="Numero">Montant</label>
+  <input
+    class="form-control"
+    type="text"
+    placeholder="montant payer"
+    [(ngModel)]="payementef.montant"
+  /><br />
+  <label for="Numero">Date</label>
+  <input
+    class="form-control"
+    type="datetime-local"
+    placeholder="la date"
+    [(ngModel)]="payementef.date"
+  /><br />
+  <br />
+  <button class="btn btn-primary" (click)="save()">Enregistrer</button>
+</div>

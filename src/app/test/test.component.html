@@ -1,0 +1,111 @@
+<section class="sections home text-center">
+  <div class="overlay">
+    <div class="container"></div>
+  </div>
+</section>
+<br /><br /><br />
+<div class="col-lg-4 text-center">
+  <input
+    class="form-control"
+    type="text"
+    placeholder="Id de l'article"
+    [(ngModel)]="boubousaisi.id"
+  /><br />
+  <input
+    class="form-control"
+    type="text"
+    placeholder="prix de l'article"
+    [(ngModel)]="boubousaisi.prix"
+  /><br />
+  <input
+    class="form-control"
+    type="text"
+    placeholder="description de l'article"
+    [(ngModel)]="boubousaisi.desc"
+  /><br />
+  <input class="form-control" type="file" (change)="showPreview($event)" />
+  <br />
+  <input class="form-control" type="file" (change)="showPreview($event)" />
+  <br />
+  <input class="form-control" type="file" (change)="showPreview($event)" />
+  <br />
+  <input class="form-control" type="file" (change)="showPreview($event)" />
+  <br />
+  <button class="btn btn-primary" (click)="save()">Enregistrer</button>
+</div>
+<br /><br />
+<br />
+<!--
+<h2>File Upload</h2>
+<input type="text" placeholder="Save with Key" [(ngModel)]="boubousaisi.id" />
+<br /><br />
+<input type="text" placeholder="prix" [(ngModel)]="boubousaisi.prix" />
+<br /><br />
+<input type="text" placeholder="description" [(ngModel)]="boubousaisi.desc" />
+<br /><br />
+<input type="file" (change)="showPreview($event)" />
+<button (click)="save()">Save</button>-->
+<!--
+<h2>File View</h2>
+<input
+  type="text"
+  name="file"
+  [(ngModel)]="file"
+  placeholder="Enter Unique Search Key"
+/>
+<button (click)="view()">View</button>-->
+
+<!--<div *ngFor="let item of tableau | async">
+  <img src="{{ item.url }}" alt="" srcset="" />
+  <h2>{{ item.desc }}</h2>
+</div>-->
+
+<br /><br />
+<div class="container-fluid mt-1">
+  <div class="row">
+    <div
+      class="col-sm-3 mt-3"
+      *ngFor="let item of tableau | async; let i = index"
+    >
+      <div class="card zoom" style="width: 18rem">
+        <div class="card-body">
+          <img src="{{ item.url }}" class="card-img-top" alt="..." />
+          <i>
+            <u>{{ item.desc }}</u></i
+          >&nbsp;&nbsp;
+          <strong> {{ item.prix }}</strong>
+          &nbsp;&nbsp;&nbsp;
+          <button
+            mat-mini-fab
+            color="warn"
+            class="btn btn-outline-light btn-sm"
+            matTooltip="Supprimer la publication"
+            style="color: red; font-size: 20px"
+            (click)="deleterv(item.id)"
+          >
+            <i class="fa fa-trash"></i>
+          </button>
+          <!--<button
+            mat-mini-fab
+            color="primary"
+            class="btn btn-outline-light btn-sm"
+            matTooltip="Modifier la plublication"
+          >
+            <i
+              class="fa fa-edit"
+              style="font-size: 20px; color: rgb(243, 190, 17)"
+            ></i>
+          </button>-->
+
+          <p>
+            <strong>Item Key: {{ item.id }} </strong>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<a href="/" class="nav-link active"
+  ><button type="button" class="btn btn-primary">Se Deconnecter</button></a
+>

@@ -1,0 +1,57 @@
+<div class="row" id="proBanner">
+  <div class="col-12">
+    <span class="align-items-center purchase-popup">
+      <p>Bienvenue dans la partie admin de FuturaImmo!</p>
+      <a
+        href="/animal/new"
+        target="_blank"
+        class="btn download-button purchase-button btn-purple ml-auto btn-primary"
+        >Ajouter un element</a
+      >
+      <i class="mdi mdi-close" id="bannerClose"></i>
+    </span>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-12 grid-margin">
+    <div class="card">
+      <div class="card-body">
+        <h4 class="card-title">Liste des Admins</h4>
+        <small> {{ date | date }}</small>
+        <div class="table-responsive">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>#</th>
+
+                <th>Email</th>
+                <th>ID</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let item of list; let rowindex = index">
+                <td>{{ rowindex + 1 }}</td>
+                <td>
+                  <img
+                    src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAhFBMVEX///8AAABQUFD8/Pzh4eH5+flNTU319fXCwsJJSUmvr6/W1tbw8PA/Pz9sbGw7OztERESenp6KioowMDDS0tIMDAzo6OiYmJgfHx+7u7sTExMkJCQ2NjZVVVXJycktLS2BgYFkZGR3d3dycnKdnZ2ysrKRkZGoqKhdXV1+fn4aGhoSEhJ17z+3AAAGeElEQVR4nO2da1/yPAyHnRuCnOQsCHJSgRu///d75LyetrZLScaT6y3Cr3/XtUmapE9PDMMwDMMwDMMwDMMwDMMwDMMwDMMwDMP8X4kH9e12Oxk0Y+yRhCFpR1emq95P0sQeETCNSGa86zawRwVJS1F4fJjLhxGpPsIL+20Ve3AQVD6NCv/ojbDHV4TmYLKt9/pZAv/YVLDH6Uey3X3kSLvwMcEerDujzdhS3YlVyV7H0dpJ3oHpAHvQLnSd9R2oYw/bmsrOS+DfgoM9ckuqb54C//YN7LHb4S+wJE/xq4DAKNpiDz+fn0ICo2iOLSCPqtsuqDKkbsK9FxQYRZ/YErKJCwuk/irWARRGpL1/vaPrSBtbRQYjCIFRlGDrMAMySaNoja3DzApG4S/ZNzHO8+Vt+cFWYiIBEkh3rZlDKRxSjdv4Ob46qK6mSzCFVF/EYo5TmndsKQZ8oxcqX9hSDLyAKXzGlqInBrFKj8ywteiJZ2AKF9ha9AAq7GNr0RMXibKJtLC16Ik7YAp32FoMwK2l/7ClGIDbD6nu+O38oVtC9ZAGzmqjetL2D0wh1ePSHpTAKbYSAwncfkgxPWMAt8wc+aAmsvh5hQqpBXUQQGAUUUoJA56iZyhFhqECpSKE/ODC56J6ZnSCis19EIVTVng/KtMgCgnN0ie4+EUaQisNoO+bhtIBDZxXkYZSEljRPCE9lNJqzZnqRSB1AhVCIK2gKVwA4wat45laAIWUXkOYdC8ZYsEasBjNFUr7/QGwPIwr5E66wZ1gQkbpiSawwC62IBXYebrClqNjBHcyEy2xxRho5Fap2TB+3pCy1yQmRfUNKas7kllMacESW0Au3wUVki+4KJqgOCSbPXujmELi5RZHihk35Gw1DcUcKWIOhZ4iwVOSpoxCkVRhqikKIs2ht0Ci2V4KG2+FtAIXZqqP/gj938Qa9sDtWXgJLMNuf8Evc4FYfkk2PqE3gnGLDDzyhcs0Rw+4R21KNUcPuJqn5bBmBNwSwUileNniUuhFNe05B/sjN0rn2U7YSixFSxM9dttiuTZCia2FwBJZozpy7bdF6fZBmWZ2iJhSDqk3Gb7UvuQz9EJiKvlalyKyZoW2YcYrpTzuwlSUfWP2IBP0RvM77fh3yhJzcqPxfVpXX97JnxEyDMMwmDTmtXnjcWw1iUHvena6rj3e9QHVrXiW8bspQdKFCxO1MmpYhqQEHaO6xqTWx041IcRanbjL39weXEHFqjbFv5X8p4OX1amTnb/VyTmVRsnQNh3TvMl/eO5StJpQFDn/ur1q0kwzt8SUhNxKb/ZtYu5jQ4zgf4ufmg9ppOMY0U1ek0niSzZyjtBY/ANrhUqu0XKAn8+edF81IxcjMOa6L3E662KrfdyLWio/htJK8aSlYlQo/pzhQoVZF2ndiecr48inolFmauQmtYMy/lz0iWDlJb3MGnxxkTAlSYlWTWaK+H5zX1Ngnld4IAbrTYf64oPJ/c37xa8S3eIiMhQ9JH1WrXiqZlF0c6cYecXq9Fq03LSjb4mP0KqR9D0atjfsEmSlRUT3jkmTzq6M4TP4umpdtS1NKPUASrJYbLudjwPvjzZnuifk+SRPQtnutE9OCWrMOTRdV/wGsRBDSRBySGcMmFzklHKorO3pU0SlMaJLRX+4Wz4qtpeMHVE8+HT6t5Km59RH+jWUQreie7lTrugayXEAp5+W3TMoXFtDiK+LZNdI3XVc8/zC7Bkrx1EsM7+9AfxtIJyv5xC646sPKb1cuJdJh/CM3aso0lver/JperFxv/ojRLame7erVBGTbj9PLTbuhacBOi74FKNfp5J2Fi6uH3vcTxNgT/QpYb5OJb33dF1sfPpKwttuPlc7dM7fNdlCl+fg0+4NPqvYq0b7bLmZsr7Oi41XDyb4/jxeDWZP/2izx3Vabb1u/oBvau7VLeHoYGR05zlaNrG6k1gAbpt6Ng48uKtZqdCHxcavcLgFHV/0bODZy9tmRr73YFFRGOUFCXe+l7WBK/Rtb1nL67Ewtw+MCJBRuMjzmvd+1ZjwCj3LQsPRAVcYpkWpP4+vED5WA9c0HwZ4mwbuMicY4EtR4C7GgwE+V8N8VI1CiE7YnjtzIIIkxa2wVaUI1CY6RKNZP4JVvE1obIqzkAU3je5Xp9+fnXk70rrQufIq8KLw7E/7vYSV+wzDMAzDMAzDMAzDMAzDMAzDMI/Of9svYTOF5YNDAAAAAElFTkSuQmCC"
+                    class="mr-2"
+                    alt="image"
+                  />
+                  {{ item.email }}
+                </td>
+                <td>
+                  {{ item.uid }}
+                </td>
+                <td>
+                  <label class="badge badge-gradient-success">Admin</label>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

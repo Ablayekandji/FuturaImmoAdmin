@@ -1,0 +1,318 @@
+<div class="col-lg-12 grid-margin stretch-card">
+  <div class="card">
+    <div class="card-body">
+      <h4 class="card-title">La liste des appartements</h4>
+      <p class="card-description">
+        <code> Tout</code>
+      </p>
+      <div class="table-responsive pt-3">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>CNI Client</th>
+              <th>Montant</th>
+              <th>Date</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of tableau | async; let rowIndex = index">
+              <td>{{ rowIndex + 1 }}</td>
+              <td>{{ item.cniclient }}</td>
+              <td>{{ item.montant }}</td>
+              <td>{{ item.date }}</td>
+              <td>
+                <div class="row">
+                  <div class="text-center">
+                    <button
+                      type="button"
+                      placement="bottom"
+                      ngbTooltip="Editer"
+                      class="btn btn-gradient-info btn-rounded btn-icon btn-sm"
+                      (click)="
+                        openModal(exampleModalContent); ajourAnimal(item)
+                      "
+                    >
+                      <i class="mdi mdi-tooltip-edit"></i>
+                    </button>
+                  </div>
+                  <ng-template
+                    class="modal fade"
+                    #exampleModalContent
+                    let-modal
+                  >
+                    <div class="modal-content">
+                      <form
+                        #myForm="ngForm"
+                        class="forms-sample"
+                        [formGroup]="form"
+                        (ngSubmit)="onSubmit(item.id); modal.close()"
+                      >
+                        <div class="modal-header">
+                          <h2 class="modal-title" id="exampleModalLabel">
+                            &nbsp;&nbsp;&nbsp;&nbsp; Editer {{ item.cid }}
+                          </h2>
+                          <button
+                            type="button"
+                            class="close"
+                            data-dismiss="modal"
+                            aria-label="Close"
+                            (click)="modal.dismiss()"
+                          >
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        <div class="col-12 grid-margin stretch-card">
+                          <div class="card">
+                            <div class="modal-body">
+                              <!--Modal bodyyyyyy-->
+                              <input
+                                type="hidden"
+                                class="form-control"
+                                name="id"
+                                formControlName="id"
+                                [(ngModel)]="ajouteAnimal.id"
+                              />
+
+                              <div class="form-group">
+                                <label for="url">Url de l'image</label>
+                                <input
+                                  type="text"
+                                  class="form-control"
+                                  [(ngModel)]="ajouteAnimal.url"
+                                  name="url"
+                                  formControlName="url"
+                                  id="url"
+                                  placeholder="Veuillez entrer l'url de l'image"
+                                  required
+                                />
+                              </div>
+                              <div class="form-group">
+                                <label for="titre">Titre</label>
+                                <input
+                                  type="text"
+                                  class="form-control"
+                                  [(ngModel)]="ajouteAnimal.titre"
+                                  name="titre"
+                                  formControlName="titre"
+                                  id="titre"
+                                  placeholder="Veuillez entrer un titre"
+                                  required
+                                />
+                              </div>
+                              <div class="form-group">
+                                <label for="prix"> Prix</label>
+                                <input
+                                  type="number"
+                                  class="form-control"
+                                  name="prix"
+                                  [(ngModel)]="ajouteAnimal.prix"
+                                  formControlName="prix"
+                                  id="prix"
+                                  placeholder="XXXX XOF"
+                                  min="0"
+                                  required
+                                />
+                              </div>
+                              <div class="form-group">
+                                <label for="description">Description</label>
+                                <textarea
+                                  class="form-control"
+                                  name="description"
+                                  [(ngModel)]="ajouteAnimal.description"
+                                  formControlName="description"
+                                  id="description"
+                                  rows="4"
+                                  required
+                                ></textarea>
+                              </div>
+
+                              <!----------Body-->
+                            </div>
+                          </div>
+                        </div>
+                        <div class="modal-footer">
+                          <button type="submit" class="btn btn-success">
+                            Modifier
+                          </button>
+                          <button
+                            type="button"
+                            class="btn btn-light"
+                            data-dismiss="modal"
+                            (click)="modal.close()"
+                          >
+                            Annuler
+                          </button>
+                        </div>
+                      </form>
+                    </div>
+                  </ng-template>
+                  <!--Supprimer-->
+                  &nbsp;&nbsp;&nbsp;&nbsp;
+
+                  <div class="text-center">
+                    <button
+                      type="button"
+                      placement="bottom"
+                      ngbTooltip="Supprimer"
+                      class="btn btn-gradient-danger btn-rounded btn-icon btn-sm"
+                      (click)="openSmallModal(suspression)"
+                    >
+                      <i class="mdi mdi-archive"></i>
+                    </button>
+                  </div>
+                  <ng-template class="modal fade" #suspression let-modal>
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="suspression">
+                          Supprimer {{ item.id }}
+                        </h5>
+                        <button
+                          type="button"
+                          class="close"
+                          data-dismiss="modal"
+                          aria-label="Close"
+                          (click)="modal.dismiss()"
+                        >
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+                        <p>Voulez vous reelement supprimer ?</p>
+                      </div>
+                      <div class="modal-footer">
+                        <button
+                          type="button"
+                          class="btn btn-success"
+                          (click)="onDelete(item.id); modal.close()"
+                        >
+                          Oui
+                        </button>
+                        <button
+                          type="button"
+                          class="btn btn-light"
+                          data-dismiss="modal"
+                          (click)="modal.close()"
+                        >
+                          Annuler
+                        </button>
+                      </div>
+                    </div>
+                  </ng-template>
+                  &nbsp;&nbsp; &nbsp;&nbsp;
+
+                  <div class="text-center">
+                    <button
+                      type="button"
+                      placement="bottom"
+                      ngbTooltip="Voir Plus"
+                      class="btn btn-gradient-secondary btn-rounded btn-icon btn-sm"
+                      (click)="openModal(mediumModalContent)"
+                    >
+                      <i class="mdi mdi-eye"></i>
+                    </button>
+                  </div>
+                  <ng-template
+                    #mediumModalContent
+                    let-modal
+                    class="modal fade"
+                    id="exampleModal-2"
+                    aria-labelledby="exampleModalLabel-2"
+                  >
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">
+                          Voir Plus
+                        </h5>
+                        <button
+                          type="button"
+                          class="close"
+                          data-dismiss="modal"
+                          aria-label="Close"
+                          (click)="modal.dismiss()"
+                        >
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+                        <div class="col-md-12 grid-margin stretch-card">
+                          <div class="card">
+                            <div class="card-body">
+                              <h4 class="card-title">Informations</h4>
+                              <p class="card-description">
+                                Ceci sont les informations detaillées de
+                                {{ item.id }}
+                              </p>
+                              <ngb-tabset type="pills" class="pills-success">
+                                <ngb-tab title="Informations">
+                                  <ng-template ngbTabContent>
+                                    <div class="media">
+                                      <img
+                                        class="mr-3 w-25 rounded"
+                                        src="{{ item.url }}"
+                                        width="80%"
+                                        height="80%"
+                                        alt="sample image"
+                                      />
+                                      <div class="media-body">
+                                        <h5 class="mt-0">
+                                          <u> Le titre</u>: &nbsp;
+                                          <b>{{ item.id }}</b>
+                                        </h5>
+                                        <br />
+                                        <h5 class="mt-0">
+                                          <u> Description</u>: &nbsp;<b>{{
+                                            item.desc
+                                          }}</b>
+                                        </h5>
+
+                                        <h5 class="mt-0">
+                                          <u> Le type</u>: &nbsp;
+                                          <b>{{ item.prix }}</b>
+                                        </h5>
+                                      </div>
+                                    </div>
+                                  </ng-template>
+                                </ngb-tab>
+                                <ngb-tab title="Prix">
+                                  <ng-template ngbTabContent>
+                                    <div class="media">
+                                      <img
+                                        class="mr-3 w-25 rounded"
+                                        src="{{ item.url }}"
+                                        alt="sample image"
+                                      />
+                                      <div class="media-body">
+                                        {{ item.titre }} se vend à
+                                        <b>{{ item.prix }}</b> XOF
+                                      </div>
+                                    </div>
+                                  </ng-template>
+                                </ngb-tab>
+                              </ngb-tabset>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="modal-footer">
+                        <button
+                          type="button"
+                          class="btn btn-light"
+                          data-dismiss="modal"
+                          (click)="modal.close()"
+                        >
+                          Annuler
+                        </button>
+                      </div>
+                    </div>
+                  </ng-template>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

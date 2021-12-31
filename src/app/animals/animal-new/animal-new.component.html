@@ -1,0 +1,60 @@
+<div class="col-12 grid-margin stretch-card">
+  <div class="card">
+    <div class="card-body">
+      <h4 class="card-title">Formulaire d'ajout</h4>
+      <p class="card-description">Ajout d'un element</p>
+
+      <input
+        class="form-control"
+        type="text"
+        placeholder="Id "
+        [(ngModel)]="boubousaisi.id"
+      /><br />
+      <input
+        class="form-control"
+        type="text"
+        placeholder="prix de la maison ou location"
+        [(ngModel)]="boubousaisi.prix"
+      /><br />
+      <textarea
+        cols="109"
+        rows="10"
+        placeholder="description "
+        [(ngModel)]="boubousaisi.desc"
+      ></textarea>
+      <input class="form-control" type="file" (change)="showPreview($event)" />
+      <br />
+      <input class="form-control" type="file" (change)="showPreview($event)" />
+      <br />
+      <input class="form-control" type="file" (change)="showPreview($event)" />
+      <br />
+      <input class="form-control" type="file" (change)="showPreview($event)" />
+      <br />
+      <div class="form-group">
+         <label for="type">Types</label>
+        <select
+          class="form-control"
+          name="type"
+          [(ngModel)]="monbase"
+          id="type"
+          required
+        >
+                                                     
+          <option disabled selected></option>
+                                      
+                                                      
+          <option>Vente</option>
+                                                      
+          <option>Location</option>
+                                      
+                                                      
+          <option>Appartement</option>
+                                                      
+                                                    
+        </select>
+                                                
+      </div>
+      <button class="btn btn-primary" (click)="save()">Enregistrer</button>
+    </div>
+  </div>
+</div>

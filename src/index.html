@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>FuturaImmo Admin</title>
+    <base href="/" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/x-icon" href="favicon.ico" />
+  </head>
+  <body>
+    <app-root>
+      <div class="main-spinner-wrapper">
+        <div class="donut"></div>
+      </div>
+    </app-root>
+    <script>
+      $("#password, #confirm_password").on("keyup", function () {
+        if ($("#password").val() == $("#confirm_password").val()) {
+          $("#message").html("Matching").css("color", "green");
+        } else $("#message").html("Not Matching").css("color", "red");
+      });
+    </script>
+  </body>
+</html>
